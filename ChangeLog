@@ -1,6 +1,40 @@
 Changelog
 =========
 
+2.2.0 (2016-11-14)
+------------------
+
+Announcements:
+
+* Added Make target to obtain proper tarball file permissions; #599
+
+Bugs:
+
+* Fixed E305 regression caused by #400; #593
+
+2.1.0 (2016-11-04)
+------------------
+
+Announcements:
+
+* Change all references to the pep8 project to say pycodestyle; #530
+
+Changes:
+
+* Report E302 for blank lines before an "async def"; #556
+* Update our list of tested and supported Python versions which are 2.6, 2.7,
+  3.2, 3.3, 3.4 and 3.5 as well as the nightly Python build and PyPy.
+* Report E742 and E743 for functions and classes badly named 'l', 'O', or 'I'.
+* Report E741 on 'global' and 'nonlocal' statements, as well as prohibited
+  single-letter variables.
+* Deprecated use of `[pep8]` section name in favor of `[pycodestyle]`; #591
+
+Bugs:
+
+* Fix opt_type AssertionError when using Flake8 2.6.2 and pycodestyle; #561
+* Require two blank lines after toplevel def, class; #536
+* Remove accidentally quadratic computation based on the number of colons. This
+  will make pycodestyle faster in some cases; #314
 
 2.0.0 (2016-05-31)
 ------------------
