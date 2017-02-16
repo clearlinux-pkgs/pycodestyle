@@ -1,6 +1,29 @@
 Changelog
 =========
 
+2.3.1 (2017-01-31)
+------------------
+
+Bugs:
+
+* Fix regression in detection of E302 and E306; #618, #620
+
+2.3.0 (2017-01-30)
+------------------
+
+New Checks:
+
+* Add E722 warning for bare ``except`` clauses
+* Report E704 for async function definitions (``async def``)
+
+Bugs:
+
+* Fix another E305 false positive for variables beginning with "class" or
+  "def"
+* Fix detection of multiple spaces betwen ``async`` and ``def``
+* Fix handling of variable annotations. Stop reporting E701 on Python 3.6 for
+  variable annotations.
+
 2.2.0 (2016-11-14)
 ------------------
 
@@ -28,6 +51,7 @@ Changes:
 * Report E741 on 'global' and 'nonlocal' statements, as well as prohibited
   single-letter variables.
 * Deprecated use of `[pep8]` section name in favor of `[pycodestyle]`; #591
+* Report E722 when bare except clause is used; #579
 
 Bugs:
 
