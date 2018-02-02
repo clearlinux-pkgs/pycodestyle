@@ -4,7 +4,7 @@
 #
 Name     : pycodestyle
 Version  : 2.3.1
-Release  : 15
+Release  : 16
 URL      : http://pypi.debian.net/pycodestyle/pycodestyle-2.3.1.tar.gz
 Source0  : http://pypi.debian.net/pycodestyle/pycodestyle-2.3.1.tar.gz
 Summary  : Python style guide checker
