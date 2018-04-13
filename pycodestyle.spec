@@ -4,13 +4,14 @@
 #
 Name     : pycodestyle
 Version  : 2.3.1
-Release  : 21
+Release  : 22
 URL      : http://pypi.debian.net/pycodestyle/pycodestyle-2.3.1.tar.gz
 Source0  : http://pypi.debian.net/pycodestyle/pycodestyle-2.3.1.tar.gz
 Summary  : Python style guide checker
 Group    : Development/Tools
 License  : MIT
 Requires: pycodestyle-bin
+Requires: pycodestyle-legacypython
 Requires: pycodestyle-python3
 Requires: pycodestyle-python
 BuildRequires : pbr
@@ -29,6 +30,15 @@ Group: Binaries
 
 %description bin
 bin components for the pycodestyle package.
+
+
+%package legacypython
+Summary: legacypython components for the pycodestyle package.
+Group: Default
+Requires: python-core
+
+%description legacypython
+legacypython components for the pycodestyle package.
 
 
 %package python
@@ -57,7 +67,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523563795
+export SOURCE_DATE_EPOCH=1523656683
+python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %check
@@ -66,8 +77,10 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
+export SOURCE_DATE_EPOCH=1523656683
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -78,6 +91,10 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/pycodestyle
+
+%files legacypython
+%defattr(-,root,root,-)
+/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
