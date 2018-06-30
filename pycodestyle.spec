@@ -4,7 +4,7 @@
 #
 Name     : pycodestyle
 Version  : 2.3.1
-Release  : 32
+Release  : 33
 URL      : http://pypi.debian.net/pycodestyle/pycodestyle-2.3.1.tar.gz
 Source0  : http://pypi.debian.net/pycodestyle/pycodestyle-2.3.1.tar.gz
 Summary  : Python style guide checker
@@ -56,14 +56,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1529164068
+export SOURCE_DATE_EPOCH=1530377484
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
