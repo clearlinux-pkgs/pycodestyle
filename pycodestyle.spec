@@ -4,7 +4,7 @@
 #
 Name     : pycodestyle
 Version  : 2.5.0
-Release  : 45
+Release  : 46
 URL      : https://files.pythonhosted.org/packages/1c/d1/41294da5915f4cae7f4b388cea6c2cd0d6cd53039788635f6875dfe8c72f/pycodestyle-2.5.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/1c/d1/41294da5915f4cae7f4b388cea6c2cd0d6cd53039788635f6875dfe8c72f/pycodestyle-2.5.0.tar.gz
 Summary  : Python style guide checker
@@ -57,13 +57,19 @@ python3 components for the pycodestyle package.
 
 %prep
 %setup -q -n pycodestyle-2.5.0
+cd %{_builddir}/pycodestyle-2.5.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1550193080
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1576012991
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -71,12 +77,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pycodestyle
-cp LICENSE %{buildroot}/usr/share/package-licenses/pycodestyle/LICENSE
+cp %{_builddir}/pycodestyle-2.5.0/LICENSE %{buildroot}/usr/share/package-licenses/pycodestyle/d8fe0238d3879904c1daae4d1dff277a11baad4a
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -91,7 +97,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pycodestyle/LICENSE
+/usr/share/package-licenses/pycodestyle/d8fe0238d3879904c1daae4d1dff277a11baad4a
 
 %files python
 %defattr(-,root,root,-)
