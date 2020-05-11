@@ -5,5 +5,6 @@ flake8
 flake8-builtins
 flake8-import-order
 pylama
+python-language-server
 sos
 tqdm
