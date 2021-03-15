@@ -1,10 +1,6 @@
 # This file contains recursive sources that require this package
-Pillow
-ceph
 flake8
-flake8-builtins
 flake8-import-order
-pylama
 python-language-server
 sos
 tqdm
