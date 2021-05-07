@@ -4,7 +4,7 @@
 #
 Name     : pycodestyle
 Version  : 2.7.0
-Release  : 57
+Release  : 58
 URL      : https://files.pythonhosted.org/packages/02/b3/c832123f2699892c715fcdfebb1a8fdeffa11bb7b2350e46ecdd76b45a20/pycodestyle-2.7.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/02/b3/c832123f2699892c715fcdfebb1a8fdeffa11bb7b2350e46ecdd76b45a20/pycodestyle-2.7.0.tar.gz
 Summary  : Python style guide checker
